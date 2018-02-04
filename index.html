@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet1_Barry_Ibrahima</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="wrapper">
+       <section class="exo">
+            <h1>Exercice 1 : histogrammes</h1>
+            <!-- Consigne -->
+            <h2>Énoncé</h2>
+            <p>Ecrire un programme qui génère une liste aléatoire (sur deux exécutions, la liste est en général différente) de 100 nombres réels (flottants/décimaux avec deux chiffres maximums derrière la virgule, qui ne sont en général pas tous des entiers) dans l’intervalle [ 0 ; 10 [, puis écrit dans un fichier ou sort en console :</p>
+
+            <!-- Réponses -->
+            <h2>Réponses</h2>
+            <button>Actualiser la liste</button>
+            <p>la liste de ces nombres séparés par une espace: </p>
+            <p id="listeAleatoire" class="reponse"></p>
+
+            <p>la liste des effectifs des intervalles [0; 1[, [1; 3[, [3; 7[, [7; 9[ et [9; 10[,
+        séparés par une espace : </p>
+            <div id="listeEffectifs" class="reponse"></div>
+
+           <p>la liste des fréquences de ces mêmes intervalles, toujours séparés par une espace :</p>
+           <div id="listeFrequences" class="reponse"></div>
+
+           <p>la liste des densités de ces mêmes intervalles, toujours séparés par une espace:</p>
+           <div id="listeDensites" class="reponse"></div>
+       </section>
+
+        <section class="exo">
+            <h1>Exercice 2 : dénombrement</h1>
+            <!-- Consigne -->
+            <h2>Énoncé</h2>
+            Ecrire un programme qui choisit un mot de 7 lettres de façon aléatoire (sur deux exécutions, le mot est en général différent) qui n’utilise que les lettres A, B, C, et D, puis écrit dans un fichier ou sort en console :
+            <!-- Réponses -->
+            <h2>Réponses</h2>
+            <button>Générer un nouveau mot</button>
+            <p>le mot de 7 lettres obtenu:</p>
+            <div id="mot" class="reponse"></div>
+
+            <p>liste d'anagramme du mot obtenue:</p>
+            <div id="listeAnagramme" class="reponse"></div>
+        </section>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
