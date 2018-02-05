@@ -1,3 +1,5 @@
+// Exercice n°2: Dénombrement
+
 class GenererAnagramme{
 
 	constructor(){
@@ -8,7 +10,7 @@ class GenererAnagramme{
 	} 
 
 	genererLettreAleatoire(){
-		var n = Math.floor(Math.random() * 7);
+		var n = Math.floor(Math.random() * 4);
 		return String.fromCharCode(65 + n); // va convertir les nombres en lettres
 	}
 
@@ -66,9 +68,7 @@ class GenererAnagramme{
 			}
 			res = liste;
 		}
-		console.log(res.size);
-		console.log('fini');
-		console.log(res);
+		return Array.from(res);
 	}
 
 
@@ -89,11 +89,3 @@ class GenererAnagramme{
 	
 }
 
-
-var g = new GenererAnagramme();
-console.log(g.motInitial);
-/*console.log(g.compterLettres("aabbaapp"));
-console.log(g.estValide("bamako", "okmaade"));
-console.log(g.estValide("bamako", "okmaab"));
-console.log(g.rajouterLettreEstValide("bon", "jour"));  */
-g.generer();

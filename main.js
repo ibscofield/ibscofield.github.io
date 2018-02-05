@@ -71,71 +71,16 @@ function exo1() {
  * Exo 2 : Dénombrement
  *************************/
 function exo2() {
-    const mot = genererUnMot();
+   var g = new GenererAnagramme();
+   document.querySelector("#mot").innerHTML= g.motInitial;
+   console.log(g.motInitial);
+   var toutLesMots = g.generer();
+   var listeMotsDiv = document.querySelector("#listeAnagramme");   
+   listeMotsDiv.innerHTML = "";
+   for(var i = 0; i<toutLesMots.length; i++){
+        listeMotsDiv.innerHTML += toutLesMots[i] + "<br>";
+   }
 
-    //listeAnagramme(mot);
-
-    document.querySelector("#mot").textContent = mot.join("");
-   //["E", "F" , "G", "H", "I", "J", "K",  "L", "M", "N", "O", "P", "Q", "R", "S", "R", "T", "U", "V", "W", "Y",  "Z"]
-
-    function genererUnMot(nombreDeLettre = 7, alphabet = ["A", "B" , "C", "D"]) {
-
-        const mot = [];
-
-        for(let i = 0; i < nombreDeLettre; i++) {
-            mot.push(alphabet[Math.floor(Math.random() * alphabet.length)]);
-        }
-        return mot;
-    }
-
-    /*
-    function listeAnagramme(mot) {
-        for(let i = 0; i < mot.length; i++) {
-            let copy = [...mot];
-            copy.splice(i, 1);
-            let r = listeMotsValide(mot[i], copy);
-            console.log(r);
-        }
-    }
-
-    function listeMotsValide(motValide, listeLettre) {
-        if (motValide.length >= 7 ) return motValide;
-
-        const listeValide = [];
-
-        for(let i = 0; i < listeLettre.length; i++) {
-            let copy = [...listeLettre];
-
-            const mot = [...motValide, copy.splice(i, 1)];
-
-            console.log(mot);
-
-            if(estValide(mot)) {
-                listeValide.push(mot);
-            } 
-
-            listeMotsValide(listeValide, copy);
-        }
-
-    }
-    */
-
-
-    // Verfie si un mot est valide
-    function estValide(motAverifier) {
-        const copy = [...mot]; 
-
-        for(let i = 0; i < motAverifier.length; i++) {
-            var index = copy.indexOf(motAverifier[i]);
-            if (index != -1) {
-                copy.splice(index, 1);
-            } else {
-                return false;
-            }
-        }
-
-        return true;
-    }   
 }
 
 /************************
@@ -153,4 +98,6 @@ buttons[1].addEventListener("click", (event) => {
 document.addEventListener('DOMContentLoaded', function(){ 
     exo1();
     exo2();
-}, false);
+}, false); 
+
+// dans le foret de bouillides dans le centre d'un lac
