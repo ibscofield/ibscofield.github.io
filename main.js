@@ -77,12 +77,7 @@ class GenererAnagramme {
 		this.motInitial = this.genererUnMot().join("");
     }
     
-    genererUnMot(nombreDeLettre = 7, alphabet = ["E", "F" , "G", "H", 
-                                                 "I", "J", "K",  "L", 
-                                                 "M", "N", "O", "P", 
-                                                 "Q", "R", "S", "R", 
-                                                 "T", "U", "V", "W", 
-                                                 "Y",  "Z"]) {
+    genererUnMot(nombreDeLettre = 7, alphabet = ["A", "B", "C", "D"]) {
 
         const mot = [];
 
