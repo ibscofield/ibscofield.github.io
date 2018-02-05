@@ -83,6 +83,7 @@ function exo2() {
 
 }
 
+
 /************************
  * AUTRE
  *************************/
@@ -92,7 +93,7 @@ buttons[0].addEventListener("click", (event) => {
 });
 
 buttons[1].addEventListener("click", (event) => {
-    exo2();
+   exo2();
 });
 
 document.addEventListener('DOMContentLoaded', function(){ 
