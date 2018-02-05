@@ -80,7 +80,10 @@ class GenererAnagramme{
 		return Array.from(res);
 	}
 
-
+	/**
+		Prend un mot en parametre, et renvoie un objet avec le nb d'occurence de chaque lettre
+		Eg : compterLettres('google') donne {g:2, o: 2, l: 1, e: 1}
+	*/
 	compterLettres(s){
 		var res = {};
 		for(var i = 0; i<s.length; i++){
