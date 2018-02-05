@@ -76,11 +76,9 @@ function exo2() {
     //listeAnagramme(mot);
 
     document.querySelector("#mot").textContent = mot.join("");
+   //["E", "F" , "G", "H", "I", "J", "K",  "L", "M", "N", "O", "P", "Q", "R", "S", "R", "T", "U", "V", "W", "Y",  "Z"]
 
-    function genererUnMot(nombreDeLettre = 7, alphabet = ["E", "F" , "G", "H", "I", "J", "K",
-                                                          "L", "M", "N", "O", "P", "Q", "R", 
-                                                          "S", "R", "T", "U", "V", "W", "Y", 
-                                                          "Z"]) {
+    function genererUnMot(nombreDeLettre = 7, alphabet = ["A", "B" , "C", "D"]) {
 
         const mot = [];
 
