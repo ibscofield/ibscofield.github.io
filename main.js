@@ -70,15 +70,19 @@ function exo1() {
 /************************
  * Exo 2 : Dénombrement
  *************************/
-function exo2() {
-    const mot = genererUnMot();
 
-    //listeAnagramme(mot);
+class GenererAnagramme {
 
-    document.querySelector("#mot").textContent = mot.join("");
-   //["E", "F" , "G", "H", "I", "J", "K",  "L", "M", "N", "O", "P", "Q", "R", "S", "R", "T", "U", "V", "W", "Y",  "Z"]
-
-    function genererUnMot(nombreDeLettre = 7, alphabet = ["A", "B" , "C", "D"]) {
+	constructor() {
+		this.motInitial = this.genererUnMot().join("");
+    }
+    
+    genererUnMot(nombreDeLettre = 7, alphabet = ["E", "F" , "G", "H", 
+                                                 "I", "J", "K",  "L", 
+                                                 "M", "N", "O", "P", 
+                                                 "Q", "R", "S", "R", 
+                                                 "T", "U", "V", "W", 
+                                                 "Y",  "Z"]) {
 
         const mot = [];
 
@@ -88,55 +92,86 @@ function exo2() {
         return mot;
     }
 
-    /*
-    function listeAnagramme(mot) {
-        for(let i = 0; i < mot.length; i++) {
-            let copy = [...mot];
-            copy.splice(i, 1);
-            let r = listeMotsValide(mot[i], copy);
-            console.log(r);
-        }
-    }
 
-    function listeMotsValide(motValide, listeLettre) {
-        if (motValide.length >= 7 ) return motValide;
+	estValide(m1, m2){
+		var cl1 = this.compterLettres(m1);
+		var cl2 = this.compterLettres(m2);
+		for(var a in cl2){
+			if(! (a in cl1)) {
+				return false;
+			}else if(cl1[a] < cl2[a]){
+				return false;
+			}
+		}
+		return true;
+	}
 
-        const listeValide = [];
+	rajouterLettreEstValide(mv, lett){
+		var m = mv + lett;
+		return this.estValide(this.motInitial, m) && m.length<=7;
+	}
 
-        for(let i = 0; i < listeLettre.length; i++) {
-            let copy = [...listeLettre];
+	rajouterListeLettreEstValide(mv, listelettre){
+		var res = [];
+		for(var i = 0; i<listelettre.length; i++){
+			if(this.rajouterLettreEstValide(mv, listelettre[i])){
+				res.push(mv + listelettre[i]);
+			}
+		}
+		return res;
+	}
 
-            const mot = [...motValide, copy.splice(i, 1)];
+	rajouterListeLettreListeMotsEstValide(listeMotValide, listelettre){
+		var res = [];
+		for(var i = 0; i<listeMotValide.length; i++){
+			var motsValidesAugmentes = this.rajouterListeLettreEstValide(listeMotValide[i], listelettre);
+			for(var j = 0; j<motsValidesAugmentes.length; j++){
+				res.push(motsValidesAugmentes[j]);
+			}
+		}
+		return res;
+	}
 
-            console.log(mot);
+	generer(){
+		var res = new Set();
+		res.add("");
+		var lettres = this.motInitial.split("");
+		while(true){
+			var liste = new Set(this.rajouterListeLettreListeMotsEstValide(Array.from(res), lettres));
+			res.delete("");
+			liste.delete("");
+			if(liste.size == res.size){
+				res = liste;
+				break;
+			}
+			res = liste;
+		}
 
-            if(estValide(mot)) {
-                listeValide.push(mot);
-            } 
+		return res;
+	}
 
-            listeMotsValide(listeValide, copy);
-        }
-
-    }
-    */
-
-
-    // Verfie si un mot est valide
-    function estValide(motAverifier) {
-        const copy = [...mot]; 
-
-        for(let i = 0; i < motAverifier.length; i++) {
-            var index = copy.indexOf(motAverifier[i]);
-            if (index != -1) {
-                copy.splice(index, 1);
-            } else {
-                return false;
-            }
-        }
-
-        return true;
-    }   
+	compterLettres(s){
+		var res = {};
+		for(var i = 0; i<s.length; i++){
+			var c = s.charAt(i); // charAt permet de recuperer le caractère à une position donnée
+			if(c in res){
+				res[c]++; 
+			} else {
+				res[c] =1;
+			}
+		}
+		return res;
+	}
 }
+
+function exo2() {
+    const g = new GenererAnagramme();
+    const mot = g.motInitial;
+
+    document.querySelector("#mot").textContent = mot;
+    document.querySelector("#listeAnagramme").textContent = Array.from(g.generer()).join(" ");   
+}
+
 
 /************************
  * AUTRE
@@ -147,7 +182,7 @@ buttons[0].addEventListener("click", (event) => {
 });
 
 buttons[1].addEventListener("click", (event) => {
-    exo2();
+   exo2();
 });
 
 document.addEventListener('DOMContentLoaded', function(){ 
